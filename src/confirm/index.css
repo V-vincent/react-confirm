@@ -1,0 +1,38 @@
+.confirm{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+}
+.confirm__content{
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.confirm__title{
+    margin: 15px;
+}
+.confirm__btn{
+    text-align: right;
+}
+.btn{
+    background: none;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+.sure{
+    background:#1890ff;
+    color: #fff;
+    margin-right: 20px;
+}
+.cancel{
+    border: 1px solid #ccc;
+    color: #ccc;
+}

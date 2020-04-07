@@ -1,105 +1,68 @@
-# react-confirm
-Small library which makes your Dialog component callable.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This library does not provide any view component. Just adds a functionality to be callable like `window.confirm`.
+## Available Scripts
 
-In the [example](https://github.com/haradakunihiko/react-confirm/tree/master/example), [react-bootstrap](https://react-bootstrap.github.io/components.html#modals) and [material-ui](http://www.material-ui.com/#/components/dialog) are used with.
+In the project directory, you can run:
 
-[![npm version](https://badge.fury.io/js/react-confirm.svg)](https://badge.fury.io/js/react-confirm)
+### `npm start`
 
-## Motivation
- React is great. And I respect the concept to render the view reactively only by it's state. However, it easily becomes really complex to manage all states which are only needed just temporarily like confirmation dialog. The question is... Is it worth to manage them inside your app? I guess the answer is not always yes.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## What you can do
- With this library,
- - You can open a dialog component by calling function and it will be rendered outside your application. The function returns promise so that you can define callbacks to handle the confirmation result.
- - You can pass arguments to the function and use them inside the dialog component.
- - You can get values from the component in the promise.
- - There is no limitation in the dialog. You can use input forms, multiple buttons, whatever you want (see demo site).
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-## Demo
-https://codesandbox.io/s/react-confirm-with-react-bootstrap-kjju1
+### `npm test`
 
-## Usage
-1. create your dialog component.
-2. apply `confirmable` to your component (optional, but usually recommended).
-3. create function with `createConfirmation` by passing your confirmable component.
-4. call it!
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### create confirmable component
+### `npm run build`
 
-```js
-import React from 'react';
-import PropTypes from 'prop-types';
-import { confirmable } from 'react-confirm';
-import Dialog from 'any-dialog-library'; // your choice.
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-const YourDialog = ({show, proceed, confirmation, options}) => {
-  <Dialog onHide={() => proceed(false)} show={show}>
-    {confirmation}
-    <button onClick={() => proceed(false)}>CANCEL</button>
-    <button onClick={() => proceed(true)}>OK</button>
-  </Dialog>
-}
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-YourDialog.propTypes = {
-  show: PropTypes.bool,            // from confirmable. indicates if the dialog is shown or not.
-  proceed: PropTypes.func,         // from confirmable. call to close the dialog with promise resolved.
-  confirmation: PropTypes.string,  // arguments of your confirm function
-  options: PropTypes.object        // arguments of your confirm function
-}
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-// confirmable HOC pass props `show`, `dismiss`, `cancel` and `proceed` to your component.
-export default confirmable(YourDialog);
+### `npm run eject`
 
-// or, use `confirmable` as decorator
-@confirmable
-class YourDialog extends React.Component {
-}
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-### create confirm function
-```js
-import { createConfirmation } from 'react-confirm';
-import YourDialog from './YourDialog';
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-// create confirm function
-export const confirm = createConfirmation(YourDialog);
+## Learn More
 
-// This is optional. But wrapping function makes it easy to use.
-export function confirmWrapper(confirmation, options = {}) {
-  return confirm({ confirmation, options });
-}
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-```
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### use it!
-Now, you can show dialog just like window.confirm with async-await. The most common example is onclick handler for submit buttons.
- 
-```js
-import { confirmWrapper, confirm } from './confirm'
+### Code Splitting
 
-const handleOnClick = async () => {
-  if (await confirm({
-    confirmation: 'Are you sure?'
-  })) {
-    console.log('yes');
-  } else {
-    console.log('no');
-  }
-}
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-const handleOnClick2 = async () => {
-  if (await confirmWrapper('Are your sure?')) {
-    console.log('yes');
-  } else {
-    console.log('no');
-  }
-}
+### Analyzing the Bundle Size
 
-```
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-You can check more complex example in [codesandbox](https://codesandbox.io/s/react-confirm-with-react-bootstrap-kjju1)
+### Making a Progressive Web App
 
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
